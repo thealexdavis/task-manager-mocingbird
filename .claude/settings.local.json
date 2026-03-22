@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(find /Users/thealexdavis/Code/task-manager -maxdepth 2 -type f -name *.json -o -name *.html -o -name *.ts -o -name *.js -o -name *.rb)"
-    ]
-  }
-}
