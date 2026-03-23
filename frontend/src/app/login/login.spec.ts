@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, provideRouter } from '@angular/router';
-import { of, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
 
 import { Login } from './login';
@@ -9,12 +9,14 @@ import { AuthService } from '../auth.service';
 describe('Login', () => {
   let component: Login;
   let fixture: ComponentFixture<Login>;
-  let authService: { login: ReturnType<typeof vi.fn> };
+  let authService: { login: ReturnType<typeof vi.fn>, currentUser$: Observable<unknown> };
   let router: Router;
 
   beforeEach(async () => {
-    authService = { login: vi.fn() };
+    // This creates a fake authentication for test purposes
+    authService = { login: vi.fn(), currentUser$: of(null) };
 
+    // This gives us a minimual Angular environment for test purposes
     await TestBed.configureTestingModule({
       imports: [Login],
       providers: [
@@ -23,6 +25,7 @@ describe('Login', () => {
       ]
     }).compileComponents();
 
+    // This lets us make assumptions without navigating to different pages
     router = TestBed.inject(Router);
     vi.spyOn(router, 'navigate');
 

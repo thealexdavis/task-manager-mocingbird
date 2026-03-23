@@ -73,6 +73,9 @@ API is available at `http://localhost:3000/api/v1`.
 ### Database commands
 
 ```bash
+# Truncate tables
+bundle exec rails db:truncate_all
+
 # Create databases
 bundle exec rails db:create
 
