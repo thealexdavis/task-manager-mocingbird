@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()">
+  <h1>Task Manager Registration</h1>
+  @if (errors.length) {
+    @for (err of errors; track err) {
+      <div class="error">{{err}}</div>
+    }
+  }
+  <fieldset>
+    <label for="first_name">First Name</label>
+  <input [(ngModel)]="form.first_name"         name="first_name"         type="text"     placeholder="First Name*"         required />
+  </fieldset>
+  <fieldset>
+    <label for="last_name">Last Name</label>
+  <input [(ngModel)]="form.last_name"          name="last_name"          type="text"     placeholder="Last Name*"          required />
+  </fieldset>
+  <fieldset>
+    <label for="email">Email Address</label>
+  <input [(ngModel)]="form.email"              name="email"              type="email"    placeholder="Email*"              required />
+  </fieldset>
+  <fieldset>
+    <label for="password">Password (8 Character Minimum)</label>
+  <input [(ngModel)]="form.password"           name="password"           type="password" placeholder="Password* (8 Character Minimum)"           required />
+  </fieldset>
+  <fieldset>
+    <label for="password_confirm">Confirm Password (8 Character Minimum)</label>
+  <input [(ngModel)]="form.password_confirmation" name="password_confirmation" type="password" placeholder="Confirm Password* (8 Character Minimum)" required />
+  </fieldset>
+  <button type="submit">Sign Up</button>
+  <a routerLink="/login">Already have an account? Log in</a>
+</form>

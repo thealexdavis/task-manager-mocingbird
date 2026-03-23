@@ -1,0 +1,220 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+body * {
+  box-sizing: border-box;
+}
+
+p.info {
+  margin: 1rem 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#top_bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid black;
+  height: 50px;
+  padding: 0 0.5rem;
+  background-color: #000000;
+}
+#top_bar p {
+  margin: 0;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+#top_bar button {
+  height: 40px;
+  background-color: white;
+  color: black;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#top_bar button:hover, #top_bar button:focus {
+  background-color: rgb(221, 221, 221);
+}
+
+.table-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+}
+.table-controls fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.table-controls fieldset select {
+  height: 40px;
+  margin-left: 5px;
+  border-radius: 8px;
+  padding: 10px;
+}
+.table-controls button {
+  height: 40px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  padding: 0 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.table-controls button:hover, .table-controls button:focus {
+  background-color: rgb(42, 42, 42);
+}
+
+table.task-table {
+  border: 1px solid black;
+  border-radius: 8px;
+  border-spacing: 0;
+  overflow: hidden;
+  width: calc(100% - 1rem);
+  margin: 0 auto;
+}
+table.task-table thead tr th {
+  background-color: black;
+  color: white;
+  text-align: left;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+}
+table.task-table tbody tr td {
+  padding: 0.5rem;
+}
+table.task-table tbody tr:nth-child(even) td {
+  background-color: #eee;
+}
+table.task-table button {
+  height: 30px;
+  background-color: black;
+  color: white;
+  font-size: 0.8rem;
+  outline: 0;
+  border: 0;
+  padding: 0 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 5px;
+  cursor: pointer;
+}
+table.task-table button:hover, table.task-table button:focus {
+  background-color: rgb(42, 42, 42);
+}
+
+.task-detail {
+  border: 1px solid black;
+  margin: 1rem 1rem;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.task-detail h3 {
+  margin: 0;
+}
+.task-detail > div p.label {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.task-detail > div p.value {
+  margin-top: 0;
+}
+.task-detail button {
+  height: 40px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  padding: 0 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.task-detail button:hover, .task-detail button:focus {
+  background-color: rgb(42, 42, 42);
+}
+
+.task-form {
+  border: 1px solid black;
+  margin: 1rem 1rem;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.task-form h3 {
+  margin: 0 0 1.5rem;
+}
+.task-form > div {
+  margin-bottom: 1rem;
+}
+.task-form > div label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+.task-form > div input, .task-form > div textarea, .task-form > div select {
+  width: 100%;
+}
+.task-form > div input {
+  width: 100%;
+  font-size: 1rem;
+  height: 40px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+}
+.task-form > div input:focus, .task-form > div input:hover {
+  border: 1px solid #000;
+}
+.task-form > div textarea {
+  width: 100%;
+  font-size: 1rem;
+  height: 100px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  resize: none;
+}
+.task-form > div textarea:focus, .task-form > div textarea:hover {
+  border: 1px solid #000;
+}
+.task-form > div select {
+  height: 40px;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 500px;
+}
+.task-form button {
+  height: 40px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  padding: 0 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.task-form button:hover, .task-form button:focus {
+  background-color: rgb(42, 42, 42);
+}/*# sourceMappingURL=task.css.map */

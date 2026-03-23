@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()">
+  <h1>Task Manager Log In</h1>
+  @if (error) { <div class="error">{{ error }}</div> }
+  <fieldset>
+    <label for="email">Email Address</label>
+  <input [(ngModel)]="email"    name="email" id="email"    type="email"    placeholder="Email"    required />
+  </fieldset>
+  <fieldset>
+    <label for="password">Password</label>
+  <input [(ngModel)]="password" name="password" type="password" id="password" placeholder="Password" required />
+  </fieldset>
+  <button type="submit">Log In</button>
+  <a routerLink="/signup">Don't have an account? Sign up</a>
+</form>

@@ -1,0 +1,146 @@
+@if (currentUser()) {
+  <div id="top_bar">
+    <p>Welcome back, {{ currentUser()!.first_name }}</p>
+    <button class="logout-btn" (click)="logOutUser()">Log Out</button>
+  </div>
+}
+
+<!-- ── Add / Edit form ── -->
+@if (showForm()) {
+  <div class="task-form">
+    <h3>{{ editingTask() ? 'Edit Task' : 'New Task' }}</h3>
+
+    @if (formError()) {
+      <p class="error">{{ formError() }}</p>
+    }
+
+    <div class="field">
+      <label for="formTitle">Title <span class="required">*</span></label>
+      <input id="formTitle" type="text" [(ngModel)]="formTitle" placeholder="Task title" />
+    </div>
+
+    <div class="field">
+      <label for="formDescription">Description</label>
+      <textarea id="formDescription" [(ngModel)]="formDescription" placeholder="Optional description"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="formDueDate">Due Date</label>
+      <input id="formDueDate" type="date" [(ngModel)]="formDueDate" />
+    </div>
+
+    @if (editingTask()) {
+      <div class="field">
+        <label for="formStatus">Status</label>
+        <select id="formStatus" [(ngModel)]="formStatus">
+          @for (s of statusOptions; track s) {
+            <option [value]="s">{{ formatStatus(s) }}</option>
+          }
+        </select>
+      </div>
+    }
+
+    <div class="form-actions">
+      <button (click)="submitForm()" [disabled]="formSubmitting()">
+        {{ editingTask() ? 'Save Changes' : 'Add Task' }}
+      </button>
+      <button type="button" (click)="cancelForm()">Cancel</button>
+    </div>
+  </div>
+}
+
+<!-- ── Task detail view ── -->
+@if (!showForm() && !isDeleting() && viewingTask()) {
+  <div class="task-detail">
+    <h3>{{ viewingTask()!.title }}</h3>
+
+    <div>
+      <p class="label">Status</p>
+      <p class="value">{{ formatStatus(viewingTask()!.status) }}</p>
+    </div>
+    <div>
+      <p class="label">Description</p>
+      <p class="value">{{ viewingTask()!.description || '—' }}</p>
+    </div>
+    <div>
+      <p class="label">Due Date</p>
+      <p class="value">{{ formatDate(viewingTask()!.due_date) }}</p>
+    </div>
+    <div>
+      <p class="label">Created</p>
+      <p class="value">{{ formatDate(viewingTask()!.created_at) }}</p>
+    </div>
+
+    <div class="form-actions">
+      <button (click)="openEditForm(viewingTask()!)">Edit</button>
+      <button class="delete-btn" (click)="deleteTask(viewingTask()!)">Delete</button>
+      <button type="button" (click)="closeView()">← All Tasks</button>
+    </div>
+  </div>
+}
+
+<!-- ── Task list ── -->
+@if (!showForm() && !isDeleting() && !viewingTask()) {
+
+  @if (loadingTasks()) {
+    <p class="info">Loading tasks...</p>
+  } @else if (tasks().length === 0) {
+    <p class="info">No tasks at this time</p>
+  } @else {
+    <div class="table-controls">
+      <fieldset>
+        <label for="statusFilter">Filter by status:</label>
+        <select id="statusFilter"
+                [ngModel]="filterStatus()"
+                (ngModelChange)="filterStatus.set($event)">
+          <option value="">All</option>
+          @for (s of statusOptions; track s) {
+            <option [value]="s">{{ formatStatus(s) }}</option>
+          }
+        </select>
+      </fieldset>
+      <button class="add-btn" (click)="openAddForm()">+ Add New Task</button>
+    </div>
+
+    @if (displayedTasks().length === 0) {
+      <p class="info">No tasks match the selected filter.</p>
+    } @else {
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th class="sortable" (click)="setSort('title')">
+              Title
+              @if (sortColumn() === 'title') {
+                {{ sortDirection() === 'asc' ? '▲' : '▼' }}
+              }
+            </th>
+            <th>Description</th>
+            <th>Status</th>
+            <th class="sortable" (click)="setSort('due_date')">
+              Due Date
+              @if (sortColumn() === 'due_date') {
+                {{ sortDirection() === 'asc' ? '▲' : '▼' }}
+              }
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (task of displayedTasks(); track task.id) {
+            <tr>
+              <td>{{ task.title }}</td>
+              <td>{{ truncate(task.description) }}</td>
+              <td>{{ formatStatus(task.status) }}</td>
+              <td>{{ formatDate(task.due_date) }}</td>
+              <td class="actions">
+                <button (click)="openView(task)">View</button>
+                <button (click)="openEditForm(task)">Edit</button>
+                <button class="delete-btn" (click)="deleteTask(task)">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  }
+}

@@ -1,0 +1,85 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  max-width: 100dvw;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  width: calc(100dvw - 30px);
+  margin: 0 auto;
+  border: 1px solid #eeeeee;
+  max-width: 500px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.25));
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 1rem;
+}
+form h1 {
+  margin: 0 auto;
+  text-align: center;
+}
+form fieldset {
+  border: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+form fieldset label {
+  font-size: 1rem;
+  display: none;
+}
+form fieldset input {
+  width: 100%;
+  font-size: 1rem;
+  height: 40px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+}
+form fieldset input:focus, form fieldset input:hover {
+  border: 1px solid #000;
+}
+form button {
+  width: 100%;
+  height: 40px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+form button:hover, form button:focus {
+  background-color: rgb(42, 42, 42);
+}
+form a {
+  color: black;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+form a:hover, form a:focus {
+  text-decoration: underline;
+}
+form div.error {
+  color: red;
+  margin-bottom: 0.5rem;
+  display: block;
+}/*# sourceMappingURL=signup.css.map */
