@@ -86,6 +86,9 @@
     <p class="info">Loading tasks...</p>
   } @else if (tasks().length === 0) {
     <p class="info">No tasks at this time</p>
+    <div class="table-controls">
+      <button class="add-btn" (click)="openAddForm()">+ Add New Task</button>
+    </div>
   } @else {
     <div class="table-controls">
       <fieldset>
