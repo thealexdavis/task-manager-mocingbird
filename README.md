@@ -25,10 +25,11 @@ For local development without Docker:
 
 ## Running with Docker (Recommended)
 
-### Start everything
+### Start everything (run commands in Terminal)
 
 ```bash
-docker compose up --build
+docker compose build --no-cache
+docker compose up
 ```
 
 This starts three services:
@@ -52,13 +53,13 @@ docker compose down -v
 
 ## Backend
 
-### Build & run (Docker)
+### Build & run individually - you may skip if you started everything already (Docker)
 
 ```bash
 docker compose up --build backend
 ```
 
-### Run individually (local)
+### Run individually - only if not done through Docker (local)
 
 ```bash
 cd backend
@@ -101,7 +102,7 @@ bundle exec rails test
 
 ## Frontend
 
-### Build & run (Docker)
+### Build & run individually - you may skip if you started everything already (Docker)
 
 ```bash
 docker compose up --build frontend
@@ -109,7 +110,7 @@ docker compose up --build frontend
 
 App is available at `http://localhost:4200`.
 
-### Run individually (local)
+### Run individually - only if not done through Docker (local)
 
 ```bash
 cd frontend
@@ -117,7 +118,7 @@ npm install
 npm start
 ```
 
-### Build for production
+### Build commands
 
 ```bash
 cd frontend
