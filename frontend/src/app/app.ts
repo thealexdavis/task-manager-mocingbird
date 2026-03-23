@@ -2,7 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './auth.service';
 
-// This is the root of the angular app. We redirect everyone to login initially on load for first time, or task if you're logged in
+// This is the root of the angular app. We redirect everyone to task initially on load for first time, and then login if not logged in
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
